@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Entretenimiento;
 use App\Models\Formato;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class EntretenimientoController extends Controller
 {
@@ -67,9 +66,14 @@ class EntretenimientoController extends Controller
      * @param  \App\Models\Entretenimiento  $entretenimiento
      * @return \Illuminate\Http\Response
      */
-    public function edit(Entretenimiento $entretenimiento)
+    public function edit($id)
     {
         //
+
+
+        $entretenimiento = Entretenimiento::findOrFail($id);
+        $formatos = Formato::pluck('nombre', 'id');
+        return view('entretenimiento.edit', compact('entretenimiento', 'formatos'));
     }
 
     /**
@@ -79,9 +83,14 @@ class EntretenimientoController extends Controller
      * @param  \App\Models\Entretenimiento  $entretenimiento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Entretenimiento $entretenimiento)
+    public function update(Request $request, $id)
     {
         //
+        $datosEntretenimiento = request()->except(['_token', '_method']);
+        $entretenimiento = Entretenimiento::findOrFail($id);
+        Entretenimiento::where('id', '=', $id)->update($datosEntretenimiento);
+        return redirect('entretenimiento')->with('mensaje', 'Empleado modificado');
+        //return response()->json($datosEntretenimiento);
     }
 
     /**

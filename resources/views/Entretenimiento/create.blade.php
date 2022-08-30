@@ -1,6 +1,9 @@
-<form method="POST" action="{{ url('/entretenimiento') }}">
-    @csrf
 
+
+<div class="container">
+<form action="{{url('/entretenimiento')}}" method="post">
+@csrf
     @include('entretenimiento.form')
-
 </form>
+</div>
+
