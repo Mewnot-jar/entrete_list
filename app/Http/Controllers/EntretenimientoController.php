@@ -44,8 +44,10 @@ class EntretenimientoController extends Controller
     {
         //
         $datosEntretenimiento = request()->except('_token');
-        //return redirect('empleado')->with('mensaje', 'Empleado agregado');
-        return response()->json($datosEntretenimiento);
+
+        Entretenimiento::insert($datosEntretenimiento);
+        return redirect('entretenimiento')->with('mensaje', 'Empleado agregado');
+        //return response()->json($datosEntretenimiento);
     }
 
     /**
