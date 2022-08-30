@@ -90,8 +90,11 @@ class EntretenimientoController extends Controller
      * @param  \App\Models\Entretenimiento  $entretenimiento
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Entretenimiento $entretenimiento)
+    public function destroy($id)
     {
         //
+        $entretenimiento = Entretenimiento::findOrFail($id);
+        Entretenimiento::destroy($id);
+        return redirect('entretenimiento')->with('mensaje', 'Empleado borrado');
     }
 }
