@@ -42,10 +42,19 @@ class EntretenimientoController extends Controller
     public function store(Request $request)
     {
         //
+        $campos= [
+            'formato_id'=>'required',
+            'descripcion'=>'required|string|max:100',
+            'estado'=>'required|string|max:100'
+        ];
+        $mensaje=[
+            'required'=>'El campo :attribute es requerido',
+        ];
+        $this->validate($request, $campos, $mensaje);
         $datosEntretenimiento = request()->except('_token');
 
         Entretenimiento::insert($datosEntretenimiento);
-        return redirect('entretenimiento')->with('mensaje', 'Empleado agregado');
+        return redirect('entretenimiento')->with('mensaje', 'Entretenimiento agregado');
         //return response()->json($datosEntretenimiento);
     }
 
@@ -86,10 +95,20 @@ class EntretenimientoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $campos= [
+            'formato_id'=>'required',
+            'descripcion'=>'required|string|max:100',
+            'estado'=>'required|string|max:100'
+        ];
+        $mensaje=[
+            'required'=>'El campo :attribute es requerido',
+        ];
+        $this->validate($request, $campos, $mensaje);
+
         $datosEntretenimiento = request()->except(['_token', '_method']);
         $entretenimiento = Entretenimiento::findOrFail($id);
         Entretenimiento::where('id', '=', $id)->update($datosEntretenimiento);
-        return redirect('entretenimiento')->with('mensaje', 'Empleado modificado');
+        return redirect('entretenimiento')->with('mensaje', 'Entretenimiento modificado');
         //return response()->json($datosEntretenimiento);
     }
 
@@ -104,6 +123,6 @@ class EntretenimientoController extends Controller
         //
         $entretenimiento = Entretenimiento::findOrFail($id);
         Entretenimiento::destroy($id);
-        return redirect('entretenimiento')->with('mensaje', 'Empleado borrado');
+        return redirect('entretenimiento')->with('mensaje', 'Entretenimiento borrado');
     }
 }

@@ -2,6 +2,14 @@
 
 @section('content')
     <div class="container">
+        @if (Session::has('mensaje'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ Session::get('mensaje') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <a href="{{ url('/entretenimiento/create') }}" class="btn btn-success mb-2">
             Nuevo <i class="fa-solid fa-circle-plus"></i>
         </a>
