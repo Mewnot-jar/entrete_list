@@ -22,7 +22,7 @@
 </head>
 <body class="bg-light">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow">
             <div class="container">
                 <a class="navbar-brand font-weight-bold" href="{{ url('/') }}">
                     Entrete<span class="text-black">List</span>
@@ -34,7 +34,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li>
+                            <a href="{{ url('/formatos') }}" class="nav-link font-weight-bold">Formatos</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -15,6 +15,8 @@ class FormatoController extends Controller
     public function index()
     {
         //
+        $formatos = Formato::all();
+        return view('Formato.index', compact('formatos'));
     }
 
     /**
@@ -25,6 +27,8 @@ class FormatoController extends Controller
     public function create()
     {
         //
+        $formato = new Formato();
+        return view('Formato.create', compact('formato'));
     }
 
     /**
@@ -36,6 +40,17 @@ class FormatoController extends Controller
     public function store(Request $request)
     {
         //
+        $campos= [
+            'nombre'=>'required'
+        ];
+        $mensaje=[
+            'required'=>'El campo :attribute es requerido',
+        ];
+        $this->validate($request, $campos, $mensaje);
+        $datosFormato = request()->except('_token');
+
+        Formato::insert($datosFormato);
+        return redirect('formatos')->with('mensaje', 'Formato agregado');
     }
 
     /**
@@ -55,9 +70,11 @@ class FormatoController extends Controller
      * @param  \App\Models\Formato  $formato
      * @return \Illuminate\Http\Response
      */
-    public function edit(Formato $formato)
+    public function edit($id)
     {
         //
+        $formatos = Formato::findOrFail($id);
+        return view('formato.edit', compact('formatos'));
     }
 
     /**
@@ -67,9 +84,21 @@ class FormatoController extends Controller
      * @param  \App\Models\Formato  $formato
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Formato $formato)
+    public function update(Request $request, $id)
     {
         //
+        $campos= [
+            'nombre'=>'required'
+        ];
+        $mensaje=[
+            'required'=>'El campo :attribute es requerido',
+        ];
+        $this->validate($request, $campos, $mensaje);
+
+        $datosFormato = request()->except(['_token', '_method']);
+        $formato = Formato::findOrFail($id);
+        Formato::where('id', '=', $id)->update($datosFormato);
+        return redirect('formatos')->with('mensaje', 'Formato modificado');
     }
 
     /**
@@ -78,8 +107,11 @@ class FormatoController extends Controller
      * @param  \App\Models\Formato  $formato
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Formato $formato)
+    public function destroy($id)
     {
         //
+        $formato = Formato::findOrFail($id);
+        Formato::destroy($id);
+        return redirect('formatos')->with('mensaje', 'Formato borrado');
     }
 }

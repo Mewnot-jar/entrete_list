@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="container">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <p>Aqui podras crear una lista de todas tus entretenciones pendientes, en progreso y terminadas! Es importante ser organizado! Prueba agregando una nueva!</p>
+        </div>
         @if (Session::has('mensaje'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ Session::get('mensaje') }}

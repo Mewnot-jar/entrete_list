@@ -9,6 +9,7 @@ class Formato extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     public function entretenimientos()
     {
         return $this->hasMany(Formato::class, 'id');

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EntretenimientoController;
+use App\Http\Controllers\FormatoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,8 @@ Route::get('/', function () {
 });
 
 
-Route::resource('entretenimiento', EntretenimientoController::class)->middleware('auth');
+Route::resource('entretenimiento', App\Http\Controllers\EntretenimientoController::class)->middleware('auth');
+Route::resource('formatos', App\Http\Controllers\FormatoController::class)->middleware('auth');
 
 Auth::routes(['register'=>false, 'reset'=>false]);
 
