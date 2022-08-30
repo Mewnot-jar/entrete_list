@@ -1,11 +1,6 @@
 <div class="form-group">
     <label for="Nombre">Formato</label>
-    <select name="formato_id" id="">
-        @foreach ( $formatos as $formato )
-            <option value="{{$formato->id}}">a</option>
-        @endforeach
-    </select>
-    <input type="text" name="formato_id" value="{{isset($empleado->Nombre)?$empleado->Nombre:old('Nombre')}}" class="form-control">
+    {{ Form::select('formato_id', $formatos, $entretenimiento->formato_id) }}
 </div>
 <div class="form-group">
     <label for="ApellidoPaterno">Descripcion</label>

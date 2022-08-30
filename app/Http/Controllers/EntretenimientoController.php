@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Entretenimiento;
+use App\Models\Formato;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -28,7 +29,9 @@ class EntretenimientoController extends Controller
     public function create()
     {
         //
-        return view('entretenimiento.create');
+        $entretenimiento = new Entretenimiento();
+        $formatos = Formato::pluck('nombre', 'id');
+        return view('entretenimiento.create', compact('entretenimiento', 'formatos'));
     }
 
     /**
