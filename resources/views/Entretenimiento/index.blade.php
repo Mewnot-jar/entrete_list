@@ -3,7 +3,8 @@
 @section('content')
     <div class="container">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <p>Aqui podras crear una lista de todas tus entretenciones pendientes, en progreso y terminadas! Es importante ser organizado! Prueba agregando una nueva!</p>
+            <p>Aqui podras crear una lista de todas tus entretenciones pendientes, en progreso y terminadas! Es importante
+                ser organizado! Prueba agregando una nueva!</p>
         </div>
         @if (Session::has('mensaje'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -39,10 +40,11 @@
                                     class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i>
                                 </a>
 
-                                <form action="{{ url('/entretenimiento/' . $entretenimiento->id) }}" method="post" class="d-inline">
+                                <form action="{{ url('/entretenimiento/' . $entretenimiento->id) }}" method="post"
+                                    class="d-inline formulario-eliminar">
                                     @csrf
                                     {{ method_field('DELETE') }}
-                                    <button onclick="return confirm('Quieres borrar?')" value="Eliminar" class="btn btn-danger">
+                                    <button type="submit" class="btn btn-danger">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </form>
@@ -53,4 +55,54 @@
             </tbody>
         </table>
     </div>
+@endsection
+@section('js')
+    @if (session('mensaje') == 'Entretenimiento borrado')
+        <script>
+            Swal.fire(
+                'Borrado!',
+                'Tu entretenimiento fue eliminado de los registros.',
+                'success'
+            )
+        </script>
+    @endif
+    @if (session('mensaje') == 'Entretenimiento agregado')
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'El entretenimiento fue agregado!',
+                showConfirmButton: true,
+                confirmButtonText: 'Gracias!'
+            })
+        </script>
+    @endif
+    @if (session('mensaje') == 'Entretenimiento modificado')
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'El entretenimiento fue modificado!',
+                showConfirmButton: true,
+                confirmButtonText: 'Gracias!'
+            })
+        </script>
+    @endif
+    <script>
+        $('.formulario-eliminar').submit(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Estas seguro?',
+                text: "No puedes revertir esta accion!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, quiero borrarlo!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            })
+        });
+    </script>
 @endsection
