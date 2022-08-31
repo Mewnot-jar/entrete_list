@@ -16,12 +16,12 @@
         $('.formulario').submit(function(e) {
             e.preventDefault();
             Swal.fire({
-                title: 'Desesas guardar los cambios?',
+                title: '¿Desesas guardar los cambios?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, quiero guardar!',
+                confirmButtonText: '¡Si, quiero guardar!',
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {

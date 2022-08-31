@@ -7,6 +7,13 @@
             @endforeach
         </ul>
     </div>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '¡Algo salio mal!'
+        })
+    </script>
 @endif
 <div class="form-group">
     <label for="formato_id">Formato</label>

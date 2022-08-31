@@ -60,7 +60,7 @@
     @if (session('mensaje') == 'Entretenimiento borrado')
         <script>
             Swal.fire(
-                'Borrado!',
+                '¡Borrado!',
                 'Tu entretenimiento fue eliminado de los registros.',
                 'success'
             )
@@ -70,9 +70,9 @@
         <script>
             Swal.fire({
                 icon: 'success',
-                title: 'El entretenimiento fue agregado!',
+                title: '¡El entretenimiento fue agregado!',
                 showConfirmButton: true,
-                confirmButtonText: 'Gracias!'
+                confirmButtonText: '¡Gracias!'
             })
         </script>
     @endif
@@ -80,9 +80,9 @@
         <script>
             Swal.fire({
                 icon: 'success',
-                title: 'El entretenimiento fue modificado!',
+                title: '¡El entretenimiento fue modificado!',
                 showConfirmButton: true,
-                confirmButtonText: 'Gracias!'
+                confirmButtonText: '¡Gracias!'
             })
         </script>
     @endif
@@ -90,13 +90,13 @@
         $('.formulario-eliminar').submit(function(e) {
             e.preventDefault();
             Swal.fire({
-                title: 'Estas seguro?',
-                text: "No puedes revertir esta accion!",
+                title: '¿Estas seguro?',
+                text: "¡No puedes revertir esta accion!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, quiero borrarlo!',
+                confirmButtonText: '¡Si, quiero borrarlo!',
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {
