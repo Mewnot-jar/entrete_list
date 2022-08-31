@@ -6,21 +6,12 @@
             <p>Aqui podras crear una lista de todas tus entretenciones pendientes, en progreso y terminadas! Es importante
                 ser organizado! Prueba agregando una nueva!</p>
         </div>
-        @if (Session::has('mensaje'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ Session::get('mensaje') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
         <a href="{{ url('/entretenimiento/create') }}" class="btn btn-success mb-2">
             Nuevo <i class="fa-solid fa-circle-plus"></i>
         </a>
         <table class="table table-hover table-bordered text-center">
             <thead class="thead-dark">
                 <tr>
-                    <th>#</th>
                     <th>Formato</th>
                     <th>Descripcion</th>
                     <th>Estado</th>
@@ -30,7 +21,6 @@
             <tbody class="bg-white">
                 @foreach ($entretenimientos as $entretenimiento)
                     <tr>
-                        <th scope="row" class="align-middle">{{ $entretenimiento->id }}</th>
                         <td class="align-middle">{{ $entretenimiento->formatos->nombre }}</td>
                         <td class="align-middle">{{ $entretenimiento->descripcion }}</td>
                         <td class="align-middle">{{ $entretenimiento->estado }}</td>
