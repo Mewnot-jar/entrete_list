@@ -29,8 +29,12 @@
 </div>
 <div class="form-group">
     <label for="estado">Estado</label>
-    <input type="text" name="estado"
-        value="{{ isset($entretenimiento->estado) ? $entretenimiento->estado : old('estado') }}" class="form-control">
+    <select name="estado" class="form-control">
+        <option value="">-Estado-</option>
+        <option {{ ($entretenimiento->estado) == 'Pendiente' ? 'selected' : '' }} value="Pendiente">Pendiente</option>
+        <option {{ ($entretenimiento->estado) == 'En curso' ? 'selected' : '' }} value="En curso">En curso</option>
+        <option {{ ($entretenimiento->estado) == 'Finalizado' ? 'selected' : '' }} value="Finalizado">Finalizado</option>
+    </select>
         <small class="form-text text-white">Ingresa como vas con el entretenimiento. Ejemplo: Leyendo.</small>
 </div>
 <div class="d-flex justify-content-between">
