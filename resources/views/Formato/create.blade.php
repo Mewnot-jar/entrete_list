@@ -15,12 +15,12 @@
         $('.formulario').submit(function(e) {
             e.preventDefault();
             Swal.fire({
-                title: 'Desesas agregarlo?',
+                title: '¿Desesas agregarlo?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, quiero agregarlo!',
+                confirmButtonText: '¡Si, quiero agregarlo!',
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {

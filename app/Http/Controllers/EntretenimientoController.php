@@ -78,8 +78,6 @@ class EntretenimientoController extends Controller
     public function edit($id)
     {
         //
-
-
         $entretenimiento = Entretenimiento::findOrFail($id);
         $formatos = Formato::pluck('nombre', 'id');
         return view('entretenimiento.edit', compact('entretenimiento', 'formatos'));

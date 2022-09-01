@@ -19,8 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
 });
-
-
 Route::resource('entretenimiento', App\Http\Controllers\EntretenimientoController::class)->middleware('auth');
 Route::resource('formatos', App\Http\Controllers\FormatoController::class)->middleware('auth');
 
