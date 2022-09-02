@@ -24,7 +24,7 @@ Route::resource('formatos', App\Http\Controllers\FormatoController::class)->midd
 
 Auth::routes(['register'=>false, 'reset'=>false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\EntretenimientoController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/', [EntretenimientoController::class, 'index'])->name('home');
