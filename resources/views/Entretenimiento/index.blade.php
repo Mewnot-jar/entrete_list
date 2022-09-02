@@ -71,7 +71,7 @@
             Swal.fire({
                 icon: 'success',
                 title: '¡El entretenimiento fue modificado!',
-                showConfirmButton: true,php artisan --version
+                showConfirmButton: true,
                 confirmButtonText: '¡Gracias!'
             })
         </script>
